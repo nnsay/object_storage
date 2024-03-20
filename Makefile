@@ -16,3 +16,9 @@ format: active
 
 varsion: active
 	poetry run semantic-release version --no-commit --no-push --no-vcs-release
+
+build:
+	poetry build
+
+publish:
+	poetry publish
