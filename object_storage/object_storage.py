@@ -28,19 +28,19 @@ class ObjectStorage:
     else:
       self.client = boto3.client('s3')
 
-  def download_file(self, local_file: str, bucket: str, key: str):
+  def download_file(self, local_file: str, bucket: str, key: str) -> None:
     with open(local_file, 'wb') as data:
       self.client.download_fileobj(Bucket=bucket, Key=key, Fileobj=data)
 
-  def put_object(self, bucket: str, key: str, body: Union[bytes, str, BufferedReader]):
+  def put_object(self, bucket: str, key: str, body: Union[bytes, str, BufferedReader]) -> None:
     res = self.client.put_object(Bucket=bucket, Key=key, Body=body)
     return res['ETag']
 
-  def get_object(self, bucket: str, key: str):
+  def get_object(self, bucket: str, key: str) -> bytes:
     res = self.client.get_object(Bucket=bucket, Key=key)
     return res['Body'].read()
 
-  def get_object_signed_url(self, bucket: str, key: str, expires: int = default_signed_url_expires):
+  def get_object_signed_url(self, bucket: str, key: str, expires: int = default_signed_url_expires) -> str:
     return self.client.generate_presigned_url(
       'get_object', Params={'Bucket': bucket, 'Key': key}, ExpiresIn=expires
     )
