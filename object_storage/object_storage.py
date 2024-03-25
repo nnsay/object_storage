@@ -32,7 +32,7 @@ class ObjectStorage:
     with open(local_file, 'wb') as data:
       self.client.download_fileobj(Bucket=bucket, Key=key, Fileobj=data)
 
-  def put_object(self, bucket: str, key: str, body: Union[bytes, str, BufferedReader]) -> None:
+  def put_object(self, bucket: str, key: str, body: Union[bytes, str, BufferedReader]) -> str:
     res = self.client.put_object(Bucket=bucket, Key=key, Body=body)
     return res['ETag']
 
