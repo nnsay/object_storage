@@ -177,3 +177,6 @@ pyrightconfig.json
 
 # System Files
 .DS_Store
+
+# vscode
+.vscode
