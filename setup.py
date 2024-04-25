@@ -1,10 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup
+from Cython.Build import cythonize
 
 setup(
     name="object_storage",
     version="0.1",
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
+    ext_modules=cythonize("object_storage/example.py"),
+    package_dir={"": "object_storage"},
     package_data={
         "object_storage": [
             "*.so",
