@@ -1,0 +1,40 @@
+name: Release Tools
+run-name: "release tools ${{ github.ref }}"
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out git repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Golang
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+
+      - name: Install change log tools
+        run: go install github.com/git-chglog/git-chglog/cmd/git-chglog@latest
+
+      - name: Generate change log
+        id: changelog
+        run: |
+          tag=$(git tag --list --sort -version:refname | head -n 1)
+          git-chglog $tag > releaselog.md
+
+      - name: Preview change log
+        run: cat releaselog.md
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: "releaselog.md"
+          token: ${{ secrets.DEVOPS_TOKEN }}
