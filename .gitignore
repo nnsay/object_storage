@@ -1,2 +1,7 @@
 build
 poetry.toml
+.coverage
+dist/
+object_storage/__pycache__/
+*.c
+tests/

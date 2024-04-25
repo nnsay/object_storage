@@ -8,5 +8,4 @@ setup(
         "object_storage": ["object_storage/object_storage.so"]
     },  # 确保 .so 文件被包括
     include_package_data=True,
-    zip_safe=False,
 )
