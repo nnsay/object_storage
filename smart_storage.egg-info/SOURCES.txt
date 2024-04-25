@@ -1,0 +1,7 @@
+pyproject.toml
+setup.py
+smart_storage.egg-info/PKG-INFO
+smart_storage.egg-info/SOURCES.txt
+smart_storage.egg-info/dependency_links.txt
+smart_storage.egg-info/not-zip-safe
+smart_storage.egg-info/top_level.txt
