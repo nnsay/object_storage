@@ -4,7 +4,7 @@ setup(
     name="object_storage",
     version="0.1",
     package_data={
-        ".": [
+        "": [
             "object_storage.cpython-312-darwin.so",
             "object_storage.so",
         ]
