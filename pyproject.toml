@@ -1,0 +1,5 @@
+[options]
+py_modules = object_storage
+
+[options.package_data]
+* = object_storage.cpython-312-darwin.so
