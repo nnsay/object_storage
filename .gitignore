@@ -6,3 +6,4 @@ object_storage/__pycache__/
 *.c
 tests/
 pyproject.toml
+*.egg-info
