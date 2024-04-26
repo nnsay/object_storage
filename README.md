@@ -1,6 +1,10 @@
-# 1. 包说明
+# 0. 安装
 
-python-object-storage 包是针对对象存储操作的抽象化包, 主要通过 ObjectStorage 类来操作对象存储.
+```
+pip install git+https://github.com/nnsay/object-storage.git@cython
+```
+
+object-storage 包是针对对象存储操作的抽象化包, 主要通过 ObjectStorage 类来操作对象存储.
 
 # 2. 使用
 
