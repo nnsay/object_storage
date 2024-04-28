@@ -14,7 +14,7 @@ class CustomBuildExt(build_ext):
     # 编译完成后，运行 stubgen 来生成 .pyi 文件
     module_path = 'object_storage'
     stub_dir = '.types'
-    subprocess.check_call(['stubgen', '-o', stub_dir, '-p', module_path])
+    subprocess.run(['stubgen', '-o', stub_dir, '-p', module_path])
     generated_stub_dir = os.path.join(stub_dir, module_path)
     shutil.copytree(generated_stub_dir, module_path, dirs_exist_ok=True)
     # 运行原始的 build_ext 命令来编译 Cython 代码
