@@ -3,7 +3,7 @@ import shutil
 import subprocess
 
 from Cython.Build import cythonize
-from setuptools import Command, setup
+from setuptools import setup
 from setuptools.command.build_ext import build_ext
 
 
@@ -19,23 +19,6 @@ class CustomBuildExt(build_ext):
     shutil.copytree(generated_stub_dir, module_path, dirs_exist_ok=True)
     # 运行原始的 build_ext 命令来编译 Cython 代码
     super().run()
-
-
-class GenerateStubs(Command):
-  description = 'Generate .pyi stub files for type hints'
-  user_options = []
-
-  def initialize_options(self):
-    pass
-
-  def finalize_options(self):
-    pass
-
-  def run(self):
-    module_path = 'object_storage'
-    stub_dir = 'types'
-    os.makedirs(stub_dir, exist_ok=True)
-    subprocess.check_call(['stubgen', '-o', stub_dir, '-p', module_path])
 
 
 setup(
