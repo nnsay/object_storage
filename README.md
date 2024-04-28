@@ -11,6 +11,8 @@ object-storage 包是针对对象存储操作的抽象化包, 主要通过 Objec
 该包通过实例化 ObjectStorage 获取一个对象, 使用该对象来操作对象存储. 快速测试请参考如下代码:
 
 ```python
+from object_storage.object_storage import ObjectStorage
+
 bucket = 'nnsay-cn'
 provider = os.environ.get("OBJECT_STORAGE_PROVIDER", "OSS")
 config = {
