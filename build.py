@@ -8,7 +8,7 @@ from setuptools.command.build_ext import build_ext
 
 
 class CustomBuildExt(build_ext):
-  """Custom build_ext command to run stubgen after building Cython extensions."""
+  """Custom build_ext command to run stubgen and cython extensions."""
 
   def run(self):
     # 运行 stubgen 来生成 .pyi 文件
