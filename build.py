@@ -11,7 +11,7 @@ class CustomBuildExt(build_ext):
   """Custom build_ext command to run stubgen after building Cython extensions."""
 
   def run(self):
-    # 编译完成后，运行 stubgen 来生成 .pyi 文件
+    # 运行 stubgen 来生成 .pyi 文件
     module_path = 'object_storage'
     stub_dir = '.types'
     subprocess.run(['stubgen', '-o', stub_dir, '-p', module_path])
